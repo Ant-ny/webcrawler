@@ -1,35 +1,35 @@
 const { normalizeURL, getURLsFromHTML } = require('./crawl.js');
 const { test, expect } = require('@jest/globals');
 
-test('normalizeURL strip protocol', ()=> {
+test('normalizeURL strip protocol', () => {
     const input = 'https://blog.boot.dev/path'
     const actual = normalizeURL(input)
     const expected = 'blog.boot.dev/path'
     expect(actual).toEqual(expected)
 })
 
-test('normalizeURL strip trailing slash', ()=> {
+test('normalizeURL strip trailing slash', () => {
     const input = 'https://blog.boot.dev/path/'
     const actual = normalizeURL(input)
     const expected = 'blog.boot.dev/path'
     expect(actual).toEqual(expected)
 })
 
-test('normalizeURL captials', ()=> {
+test('normalizeURL captials', () => {
     const input = 'https://BLOG.boot.dev/path/'
     const actual = normalizeURL(input)
     const expected = 'blog.boot.dev/path'
     expect(actual).toEqual(expected)
 })
 
-test('normalizeURL strip http', ()=> {
+test('normalizeURL strip http', () => {
     const input = 'http://blog.boot.dev/path/'
     const actual = normalizeURL(input)
     const expected = 'blog.boot.dev/path'
     expect(actual).toEqual(expected)
 })
 
-test('getURLsFromHTML absolute', ()=> {
+test('getURLsFromHTML absolute', () => {
     const inputHTMLBody = `
 <html>
     <body>
@@ -45,7 +45,7 @@ test('getURLsFromHTML absolute', ()=> {
     expect(actual).toEqual(expected)
 })
 
-test('getURLsFromHTML relative', ()=> {
+test('getURLsFromHTML relative', () => {
     const inputHTMLBody = `
 <html>
     <body>
@@ -61,7 +61,7 @@ test('getURLsFromHTML relative', ()=> {
     expect(actual).toEqual(expected)
 })
 
-test('getURLsFromHTML both', ()=> {
+test('getURLsFromHTML both', () => {
     const inputHTMLBody = `
 <html>
     <body>
@@ -80,7 +80,7 @@ test('getURLsFromHTML both', ()=> {
     expect(actual).toEqual(expected)
 })
 
-test('getURLsFromHTML invalid', ()=> {
+test('getURLsFromHTML invalid', () => {
     const inputHTMLBody = `
 <html>
     <body>
